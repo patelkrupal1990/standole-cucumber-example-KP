@@ -1,0 +1,76 @@
+= Standalone Cucumber Example with Selenium (Krupal)
+
+== Description
+
+ As growing interest in BDD and continous integration, standalone cucumbers became good start for 
+ making test suite for non rails web projects too. 
+ 
+ This repo contains additional setups for selenium file download, and few features such as:
+  - to check there is no traditional javascript popups opened
+  - debugging: essential to find xpath to locate the interested elements
+  - javascript ajax requests completion check
+  - javascript change event trigger
+  - native key press events
+  - rspec (standalone)
+
+ Pull requests with updates/enhancements/bug fixes/adding bugs too are always welcome!
+
+== Project Layout
+
+* features/*.feature: cucumber features
+* features/step_definitions/web_steps.rb: generic steps that apply to all features
+* features/step_definitions/[feature]_steps.rb: steps specific to an individual feature file
+* features/step_definitions/debug_steps.rb: generic debug steps, debug 
+* features/support/env.rb: configures the driver (download settings) and the hostname to use
+* features/support/hooks.rb: pause step
+* features/support/download.rb: download file checkings and cleanups
+* features/support/javascript.rb: javascript triggers and ajax request completion check (requires jQuery)
+* tmp/downloads: download directory
+* config/cucumber.yml: default cuke running setups
+* rspec/spec_helper.rb: rspec helper and env loader
+* rspec/integration/*_spec.rb: sample rspecs 
+* .rdebugrc: debugger setups
+* .rspec: rspec output print format and debug option  
+
+== Prerequisites
+
+* Ruby http://www.ruby-lang.org/en/downloads/
+* Ruby Gems http://rubygems.org/
+* Bundler: gem install bundler
+
+== Configuration
+
+* bundle install
+(Gemfile.lock is removed from this repo to be version agnostic)
+
+== Running Features
+
+* To run all features: rake
+* To run a specific feature: cucumber features/search.feature
+* To run specs: bundle exec rspec spec
+
+== Debugging
+
+* To debug a specific step call save_and_open_page within the step
+* Use 'I debug' step in scenarios
+* Use 'debugger' in step definitions 
+* Use 'debugger' in rspec example
+
+== Selenium profile configuration
+
+* Use Firefox -> Preferences/Options -> Application tab for finding suitable file 
+  type to be added in 'browser.helperApps.neverAsk.saveToDisk' list
+* More info on mozilla {about:config}[http://kb.mozillazine.org/Firefox_:_FAQs_:_About:config_Entries]
+  
+
+== Additional Documentation
+
+* http://cukes.info (for general cucumber information)
+* http://github.com/jnicklas/capybara (for actions such as click_link, click_button, etc...)
+* Person sitting next to you, who may know more about your skills!
+
+== More info
+ Visit http://cukes.info/
+
+==OWNER
+ KRUPAL
